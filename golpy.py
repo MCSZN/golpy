@@ -7,7 +7,7 @@ import argparse
 
 parser = argparse.ArgumentParser()
 
-CELL_SIZE = 10
+CELL = 10
 
 class MyScreen():
     def __init__(self):
@@ -137,13 +137,13 @@ class LifeBoard:
         turtle.penup()
         key = (x, y)
         if key in self.state:
-            turtle.setpos(x*CELL_SIZE, y*CELL_SIZE)
+            turtle.setpos(x*CELL, y*CELL)
             turtle.color('white')
             turtle.pendown()
             turtle.setheading(0)
             turtle.begin_fill()
             for i in range(4):
-                turtle.forward(CELL_SIZE-1)
+                turtle.forward(CELL-1)
                 turtle.left(90)
             turtle.end_fill()
             
@@ -171,7 +171,7 @@ def main():
     turtle.penup()
     turtle.hideturtle()
 
-    board = LifeBoard(xsize // CELL_SIZE, 1 + ysize // CELL_SIZE)
+    board = LifeBoard(xsize // CELL, 1 + ysize // CELL)
 
     if args.rand:
         board.makeRandom()
